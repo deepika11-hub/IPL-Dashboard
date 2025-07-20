@@ -97,12 +97,23 @@ if selected_team:
     ax5.set_title(f"{selected_team} - Toss Wins vs Match Wins After Toss")
     st.pyplot(fig5)
 
-    # 6. IPL Trophies
+    # 6. IPL Trophies (Champions)
     st.subheader("\U0001F3C6 IPL Trophy Count")
+
+    # Filter for finals
     final_matches = df[df['match_type'].str.lower() == 'final']
+
+    # Count trophies
     trophies = final_matches[final_matches['winner'] == selected_team].shape[0]
-    trophy_emojis = "\U0001F3C6" * trophies if trophies > 0 else "No trophies yet \U0001F97A"
-    st.success(f"**{selected_team} has won {trophies} IPL trophy{'ies' if trophies != 1 else ''}.**\n\n{trophy_emojis}")
+
+    # Manually add 1 trophy for RCB (2025)
+    if selected_team == "Royal Challengers Bengaluru":
+        trophies += 1
+        st.success(f"**{selected_team} has won {trophies} IPL trophy{'ies' if trophies != 1 else ''}.**\n\n\U0001F3C6 2025")
+    else:
+        trophy_emojis = "\U0001F3C6" * trophies if trophies > 0 else "No trophies yet \U0001F97A"
+        st.success(f"**{selected_team} has won {trophies} IPL trophy{'ies' if trophies != 1 else ''}.**\n\n{trophy_emojis}")
+
 
     # 7. Most Successful Chasers
     st.subheader("\U0001F3C1 Most Successful Chase Teams (Top 5)")
