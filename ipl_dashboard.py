@@ -8,7 +8,7 @@ df = pd.read_csv("ipl_cleaned.csv")
 st.set_page_config(page_title="IPL Team Dashboard", layout="centered")
 
 # Title
-st.title("\U0001F3CF IPL Team Performance Dashboard")
+st.title("\U0001F3CF IPL Team Performance Dashboard(2008-2024)")
 st.markdown("Explore detailed analysis of each IPL team's journey, match wins, toss outcomes, and trophies.")
 
 # Team selection
